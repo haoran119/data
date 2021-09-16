@@ -115,6 +115,7 @@
 * [美团二面：Redis与MySQL双写一致性如何保证？ (qq.com)](https://mp.weixin.qq.com/s/N4LZwRRvj95ZavZewG0adw)
 
 ## SQL
+* [Solve SQL | HackerRank](https://www.hackerrank.com/domains/sql?badge_type=sql)
 * [破解面试难题8个角度带你解读SQL面试技巧！ (qq.com)](https://mp.weixin.qq.com/s/BvGSzmKBSBBcnS84xh_M7w)
 * [我说 SELECT COUNT(*) 会造成全表扫描 (qq.com)](https://mp.weixin.qq.com/s/NZjPYa2YA3K7OY_-hqdmhA)
 * [数据科学家常见的5个SQL面试问题 (qq.com)](https://mp.weixin.qq.com/s/7n8EC3qqpZfWa4OybLPCMA)
