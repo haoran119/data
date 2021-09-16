@@ -2,6 +2,7 @@
 
 ## DATABASE
 
+* [Solve Databases | HackerRank](https://www.hackerrank.com/domains/databases)
 * 什么是数据库事务？
   * [数据库事务_百度百科](https://baike.baidu.com/item/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E5%8A%A1/9744607?fr=aladdin)
   * 一个逻辑工作单元要成为事务，必须满足所谓的ACID（原子性（atomicity，或称不可分割性）、一致性（consistency）、隔离性（isolation，又称独立性）、持久性（durability)）属性。
@@ -90,6 +91,7 @@
 * [面试官：数据库自增ID用完了会怎么样？ (qq.com)](https://mp.weixin.qq.com/s/iZPBpq2hVL6NdbGz-gcPTw)
 
 ## MYSQL
+
 * [面试官：谈谈你对MySQL索引的认识？](https://mp.weixin.qq.com/s/NRapquVpiqynt4BOUCwCoQ)
 * [面试小知识：MySQL索引相关 - 数据库开发](https://mp.weixin.qq.com/s/j-meke0QMqTgPInj118UZA)
 * [面试官：为什么 MySQL 的索引要使用 B+ 树，而不是其它树？比如 B 树？](https://mp.weixin.qq.com/s/k1BqFgc2ck_HR5Q6HmnNWQ)
@@ -111,10 +113,12 @@
 * [阿里二面，为什么MySQL选择Repeatable Read作为默认隔离级别？ (qq.com)](https://mp.weixin.qq.com/s/bbtrO4ZP-5KnQ_XWXQh1sA)
 
 ## REDIS
+
 * [Redis 常见面试题请收好 | 原力计划 (qq.com)](https://mp.weixin.qq.com/s/a_OU80touv7RVXosy6YULw)
 * [美团二面：Redis与MySQL双写一致性如何保证？ (qq.com)](https://mp.weixin.qq.com/s/N4LZwRRvj95ZavZewG0adw)
 
 ## SQL
+
 * [Solve SQL | HackerRank](https://www.hackerrank.com/domains/sql?badge_type=sql)
 * [破解面试难题8个角度带你解读SQL面试技巧！ (qq.com)](https://mp.weixin.qq.com/s/BvGSzmKBSBBcnS84xh_M7w)
 * [我说 SELECT COUNT(*) 会造成全表扫描 (qq.com)](https://mp.weixin.qq.com/s/NZjPYa2YA3K7OY_-hqdmhA)
