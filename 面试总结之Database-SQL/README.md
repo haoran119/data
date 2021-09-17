@@ -77,6 +77,7 @@
   * Time-variant, meaning that the changes to the data in the database are tracked and recorded so that reports can be produced showing changes over time;
   * Non-volatile, meaning that data in the database is never over-written or deleted, once committed, the data is static, read-only, but retained for future reporting.
   * Integrated, meaning that the database contains data from most or all of an organization’s operational applications, and that this data is made consistent.
+* OLAP v.s. OLTP
 * 机器Crash之后数据如何备份恢复？
 * 大文件如何读取到数据库？
 * 如何分析SQL语句执行很慢？
