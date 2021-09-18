@@ -78,6 +78,22 @@
   * Non-volatile, meaning that data in the database is never over-written or deleted, once committed, the data is static, read-only, but retained for future reporting.
   * Integrated, meaning that the database contains data from most or all of an organization’s operational applications, and that this data is made consistent.
 * OLAP v.s. OLTP
+  * [OLTP vs OLAP: Difference Between OLTP and OLAP](https://www.guru99.com/oltp-vs-olap.html)
+  * What is OLAP?
+    * Online Analytical Processing, a category of software tools which provide analysis of data for business decisions. OLAP systems allow users to analyze database information from multiple database systems at one time.
+    * The primary objective is data analysis and not data processing.
+  * What is OLTP?
+    * Online transaction processing shortly known as OLTP supports transaction-oriented applications in a 3-tier architecture. OLTP administers day to day transaction of an organization.
+    * The primary objective is data processing and not data analysis
+  * Example of OLAP
+    * Any Datawarehouse system is an OLAP system. 
+  * Example of OLTP system
+    * An example of OLTP system is ATM center. 
+  * KEY DIFFERENCE between OLTP and OLAP:
+    * Online Analytical Processing (OLAP) is a category of software tools that analyze data stored in a database whereas Online transaction processing (OLTP) supports transaction-oriented applications in a 3-tier architecture.
+    * OLAP creates a single platform for all type of business analysis needs which includes planning, budgeting, forecasting, and analysis while OLTP is useful to administer day to day transactions of an organization.
+    * OLAP is characterized by a large volume of data while OLTP is characterized by large numbers of short online transactions.
+    * In OLAP, data warehouse is created uniquely so that it can integrate different data sources for building a consolidated database whereas OLTP uses traditional DBMS.
 * 机器Crash之后数据如何备份恢复？
 * 大文件如何读取到数据库？
 * 如何分析SQL语句执行很慢？
