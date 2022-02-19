@@ -109,6 +109,8 @@
 
 ## MYSQL
 
+* [MySQL | Regular expressions (Regexp) - GeeksforGeeks](https://www.geeksforgeeks.org/mysql-regular-expressions-regexp/)
+  * MySQL supports another type of pattern matching operation based on the regular expressions and the REGEXP operator.
 * [面试官：谈谈你对MySQL索引的认识？](https://mp.weixin.qq.com/s/NRapquVpiqynt4BOUCwCoQ)
 * [面试小知识：MySQL索引相关 - 数据库开发](https://mp.weixin.qq.com/s/j-meke0QMqTgPInj118UZA)
 * [面试官：为什么 MySQL 的索引要使用 B+ 树，而不是其它树？比如 B 树？](https://mp.weixin.qq.com/s/k1BqFgc2ck_HR5Q6HmnNWQ)
