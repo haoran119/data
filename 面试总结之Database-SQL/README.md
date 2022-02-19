@@ -109,6 +109,15 @@
 
 ## MYSQL
 
+* [CASE() Function in MySQL - GeeksforGeeks](https://www.geeksforgeeks.org/case-function-in-mysql/?ref=gcse)
+```SQL
+CASE
+    WHEN condition1 THEN result1
+    WHEN condition2 THEN result2
+    WHEN conditionN THEN resultN
+    ELSE result
+END;
+```
 * [MySQL | Regular expressions (Regexp) - GeeksforGeeks](https://www.geeksforgeeks.org/mysql-regular-expressions-regexp/)
   * MySQL supports another type of pattern matching operation based on the regular expressions and the REGEXP operator.
 * [RIGHT() Function in MySQL - GeeksforGeeks](https://www.geeksforgeeks.org/right-function-in-mysql/?ref=gcse)
