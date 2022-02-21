@@ -1,5 +1,7 @@
 # 面试总结之Database / SQL
 
+* [database/学习笔记之Database-SQL at main · haoran119/database](https://github.com/haoran119/database/tree/main/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8BDatabase-SQL)
+
 ## DATABASE
 
 * [Solve Databases | HackerRank](https://www.hackerrank.com/domains/databases)
