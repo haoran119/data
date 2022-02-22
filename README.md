@@ -5,3 +5,5 @@
 * [Data Mining / Data Science - 随笔分类 - 浩然119 - 博客园](https://www.cnblogs.com/pegasus923/category/264077.html)
   * [学习笔记之Data Science - 浩然119 - 博客园](https://www.cnblogs.com/pegasus923/p/8883011.html)
   * [面试总结之Data Science - 浩然119 - 博客园](https://www.cnblogs.com/pegasus923/p/11009226.html)
+  * [学习笔记之Data analysis - 浩然119 - 博客园](https://www.cnblogs.com/pegasus923/p/10365302.html)
+  * [学习笔记之Data Visualization - 浩然119 - 博客园](https://www.cnblogs.com/pegasus923/p/8883162.html)
