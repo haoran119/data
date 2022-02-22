@@ -109,6 +109,22 @@
 * [高并发之存储篇：关注下索引原理和优化吧！ (qq.com)](https://mp.weixin.qq.com/s/xmAhtJXFNkmOR4Cko9e-cQ)
 * [面试官：数据库自增ID用完了会怎么样？ (qq.com)](https://mp.weixin.qq.com/s/iZPBpq2hVL6NdbGz-gcPTw)
 
+## DATA WAREHOUSE
+
+* ETL v.s. ELT
+  * [Extract, transform, load - Wikipedia](https://en.wikipedia.org/wiki/Extract,_transform,_load#ETL_Vs._ELT)
+    * In computing, extract, transform, load (ETL) is the general procedure of copying data from one or more sources into a destination system which represents the data differently from the source(s) or in a different context than the source(s). The ETL process became a popular concept in the 1970s and is often used in data warehousing.[1]
+    * Data extraction involves extracting data from homogeneous or heterogeneous sources; data transformation processes data by data cleaning and transforming them into a proper storage format/structure for the purposes of querying and analysis; finally, data loading describes the insertion of data into the final target database such as an operational data store, a data mart, data lake or a data warehouse.[2][3]
+    * A properly designed ETL system extracts data from the source systems, enforces data quality and consistency standards, conforms data so that separate sources can be used together, and finally delivers data in a presentation-ready format so that application developers can build applications and end users can make decisions.[4]
+    * Since the data extraction takes time, it is common to execute the three phases in pipeline. While the data is being extracted, another transformation process executes while processing the data already received and prepares it for loading while the data loading begins without waiting for the completion of the previous phases.
+    * ETL systems commonly integrate data from multiple applications (systems), typically developed and supported by different vendors or hosted on separate computer hardware. The separate systems containing the original data are frequently managed and operated by different employees. For example, a cost accounting system may combine data from payroll, sales, and purchasing.
+  * [Extract, load, transform - Wikipedia](https://en.wikipedia.org/wiki/Extract,_load,_transform)
+    * Extract, load, transform (ELT) is an alternative to extract, transform, load (ETL) used with data lake implementations. In contrast to ETL, in ELT models the data is not transformed on entry to the data lake, but stored in its original raw format. This enables faster loading times. However, ELT requires sufficient processing power within the data processing engine to carry out the transformation on demand, to return the results in a timely manner. Since the data is not processed on entry to the data lake, the query and schema do not need to be defined a priori (although often the schema will be available during load since many data sources are extracts from databases or similar structured data systems and hence have an associated schema). ELT is a data pipeline model.[1]
+  * [Data lake - Wikipedia](https://en.wikipedia.org/wiki/Data_lake)
+    * A data lake is a system or repository of data stored in its natural/raw format,[1] usually object blobs or files. A data lake is usually a single store of data including raw copies of source system data, sensor data, social data etc.,[2] and transformed data used for tasks such as reporting, visualization, advanced analytics and machine learning. A data lake can include structured data from relational databases (rows and columns), semi-structured data (CSV, logs, XML, JSON), unstructured data (emails, documents, PDFs) and binary data (images, audio, video).[3] A data lake can be established "on premises" (within an organization's data centers) or "in the cloud" (using cloud services from vendors such as Amazon, Microsoft, or Google).
+    * A data swamp is a deteriorated and unmanaged data lake that is either inaccessible to its intended users or is providing little value.[4]
+* [ETL vs ELT: Key Differences, Side-by-Side Comparisons, & Use Cases (rivery.io)](https://rivery.io/blog/etl-vs-elt/)
+
 ## MYSQL
 
 * [CASE() Function in MySQL - GeeksforGeeks](https://www.geeksforgeeks.org/case-function-in-mysql/?ref=gcse)
