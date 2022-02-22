@@ -137,6 +137,7 @@
       * ETL does not transfer raw data into the data warehouse, while ELT sends raw data directly to the data warehouse.
   * ETL vs ELT: Side-by-Side Comparison
 
+- | - | -
 Category | ETL | ELT
 - | - | -
 Definition | Data is extracted from a source system, transformed on a secondary processing server, and loaded into a destination system. | Data is extracted from a source system, loaded into a destination system, and transformed inside the destination system. 
