@@ -124,6 +124,38 @@
     * A data lake is a system or repository of data stored in its natural/raw format,[1] usually object blobs or files. A data lake is usually a single store of data including raw copies of source system data, sensor data, social data etc.,[2] and transformed data used for tasks such as reporting, visualization, advanced analytics and machine learning. A data lake can include structured data from relational databases (rows and columns), semi-structured data (CSV, logs, XML, JSON), unstructured data (emails, documents, PDFs) and binary data (images, audio, video).[3] A data lake can be established "on premises" (within an organization's data centers) or "in the cloud" (using cloud services from vendors such as Amazon, Microsoft, or Google).
     * A data swamp is a deteriorated and unmanaged data lake that is either inaccessible to its intended users or is providing little value.[4]
 * [ETL vs ELT: Key Differences, Side-by-Side Comparisons, & Use Cases (rivery.io)](https://rivery.io/blog/etl-vs-elt/)
+  * ETL (Extract, Transform, Load) and ELT (Extract, Load, Transform) are both data integration methods that transfer data from a source to a data warehouse. Despite similarities, ETL and ELT differ in fundamental ways. Here’s a quick comparison of ETL and ELT (ETL vs ELT).
+  * What is ETL (Extract, Transform, Load)?
+    * Extract, transform, and load (ETL) is a data integration methodology that extracts raw data from sources, transforms the data on a secondary processing server, and then loads the data into a target database.
+  * What Is ELT (Extract, Load, Transform)?
+    * Unlike ETL, extract, load, and transform (ELT) does not require data transformations to take place before the loading process.
+    * ELT loads raw data directly into a target data warehouse, instead of moving it to a processing server for transformation.
+    * Cloud data warehouses such as Snowflake, Amazon Redshift, Google BigQuery, and Microsoft Azure all have the digital infrastructure, in terms of storage and processing power, to facilitate raw data repositories and in-app transformations.
+  * ETL vs ELT: How is ETL Different from the ELT Process?
+    * ETL and ELT differ in two primary ways. One difference is where the data is transformed, and the other difference is how data warehouses retain data.
+      * ETL transforms data on a separate processing server, while ELT transforms data within the data warehouse itself.
+      * ETL does not transfer raw data into the data warehouse, while ELT sends raw data directly to the data warehouse.
+  * ETL vs ELT: Side-by-Side Comparison
+
+Category | ETL | ELT
+- | - | -
+Definition | Data is extracted from a source system, transformed on a secondary processing server, and loaded into a destination system. | Data is extracted from a source system, loaded into a destination system, and transformed inside the destination system. 
+Extract | Raw data is extracted using API connectors. | Raw data is extracted using API connectors.
+Transform | Raw data is transformed on a processing server. | Raw data is transformed inside the target system. 
+Load | Transformed data is loaded into a destination system. | Raw data is loaded directly into the target system.
+Speed | ETL is a time-intensive process; data is transformed before loading into a destination system. | ELT is faster by comparison; data is loaded directly into a destination system, and transformed in-parallel.
+Code-Based Transformations | Performed on secondary server. Best for compute-intensive transformations & pre-cleansing.  | Transformations performed in-database; simultaneous load & transform; speed & efficiency.
+Maturity | Modern ETL has existed for 20+ years; its practices & protocols are well-known and documented. | ELT is a newer form of data integration; less documentation & experience. 
+Privacy | Pre-load transformation can eliminate PII (helps for HIPPA). | Direct loading of data requires more privacy safeguards.
+Maintenance | Secondary processing server adds to the maintenance burden. | With fewer systems, the maintenance burden is reduced.
+Costs | Separate servers can create cost issues. | Simplified data stack costs less.
+Requeries | Data is transformed before entering destination system; therefore raw data cannot be requeried. | Raw data is loaded directly into destination system and can be requeried endlessly.
+Data Lake Compatibility  | No, ETL does not have data lake compatibility.  | Yes, ELT does have data lake compatibility. 
+Data Output | Structured (typically). | Structured, semi-structured, unstructured.
+Data Volume  | Ideal for small data sets with complicated transformation requirements.  | Ideal for large datasets that require speed & efficiency.
+
+  * A Brief History: ETL & ELT Processes
+  * Which is Better: ETL or ELT?
 
 ## MYSQL
 
