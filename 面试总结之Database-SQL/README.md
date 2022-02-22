@@ -154,8 +154,8 @@ Data Lake Compatibility  | No, ETL does not have data lake compatibility.  | Yes
 Data Output | Structured (typically). | Structured, semi-structured, unstructured.
 Data Volume  | Ideal for small data sets with complicated transformation requirements.  | Ideal for large datasets that require speed & efficiency.
 
-    * A Brief History: ETL & ELT Processes
-    * Which is Better: ETL or ELT?
+  * A Brief History: ETL & ELT Processes
+  * Which is Better: ETL or ELT?
 
 ## MYSQL
 
