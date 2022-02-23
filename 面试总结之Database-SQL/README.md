@@ -100,6 +100,31 @@
 * 大文件如何读取到数据库？
 * 如何分析SQL语句执行很慢？
   * SQL explain ?
+* 提供一组以tree的形式展示的数据，区域+cost，计算每个大区的总和
+  * How to implement a hierarchical dataset using SQL
+  * [Hierarchical database model - Wikipedia](https://en.wikipedia.org/wiki/Hierarchical_database_model)
+  * [Hierarchical Data in SQL: The Ultimate Guide - Database Star](https://www.databasestar.com/hierarchical-data-sql/)
+    * What is Hierarchical Data?
+    * Adjacency List
+      * Adjacency List is a design method for implementing hierarchical data. It’s achieved by storing the ID of the related record on the desired record. You add one column to your table, and set it as a foreign key to the same table’s primary key.
+      * This is the method that I recommend using for most cases.
+      * Pros
+        * It’s easy to implement. It just involves adding a new column that refers to the ID of the parent record in the same table.
+        * It’s easy to add new items.
+        * It’s easy to move items to a different place in the hierarchy.
+        * It’s fairly easy to remove items.
+      * Cons
+        * The query to fetch data is complicated. In most databases you need to write a WITH clause with two queries inside it.
+        * The query to fetch the entire tree, or subset of the tree, can be slow to run with a large amount of records.
+        * It can be hard to find the path of a record from the root to the current record.
+        * Deleting items that have children causes the children’s relationship to break, or the delete will fail, depending on the constraint settings. You’ll need to update the children to move them to a new parent before deleting.
+    * Nested Set
+    * Flat Table
+    * Bridge Table or Closure Table
+    * Lineage Column or Path Enumeration
+    * Summary of Methods
+    * Which Method Should I Use?
+    * Conclusion
 * [腾讯面试：一条SQL语句执行得很慢的原因有哪些？](https://mp.weixin.qq.com/s/2o0iS4LVzl5PDz1zTILnLw)
 * [面试官：数据量很大，分页查询很慢，怎么优化？](http://uusama.com/458.html)
 * [面试官：给我讲一下分库分表方案](https://www.cnblogs.com/littlecharacter/p/9342129.html)
