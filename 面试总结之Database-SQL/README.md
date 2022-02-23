@@ -5,6 +5,7 @@
 ## DATABASE
 
 * [Solve Databases | HackerRank](https://www.hackerrank.com/domains/databases)
+* [What is a Columnar Database? - GeeksforGeeks](https://www.geeksforgeeks.org/what-is-a-columnar-database/?ref=gcse)
 * 什么是数据库事务？
   * [数据库事务_百度百科](https://baike.baidu.com/item/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E5%8A%A1/9744607?fr=aladdin)
   * 一个逻辑工作单元要成为事务，必须满足所谓的ACID（原子性（atomicity，或称不可分割性）、一致性（consistency）、隔离性（isolation，又称独立性）、持久性（durability)）属性。
