@@ -73,7 +73,7 @@
     * Multi-statement Table-Value User-Defined Function
       * A Multi-Statement Table-Value user-defined function returns a table and is also an exceptional alternative to a view as the function can support multiple T-SQL statements to build the final result where the view is limited to a single SELECT statement. Also, the ability to pass parameters into a TSQL select command or a group of them gives us the capability to in essence create a parameterized, non-updateable view of the data in the underlying tables. Within the create function command you must define the table structure that is being returned. After creating this type of user-defined function, It can be used in the FROM clause of a T-SQL command unlike the behavior found when using a stored procedure which can also return record sets. (Read Here For Example)
 * Window Functions
-  * [Window functions in SQL - GeeksforGeeks](Window functions in SQL - GeeksforGeeks)
+  * [Window functions in SQL - GeeksforGeeks](https://www.geeksforgeeks.org/window-functions-in-sql/?ref=gcse)
     * Window functions applies aggregate and ranking functions over a particular window (set of rows). OVER clause is used with window functions to define that window. OVER clause does two things : 
       * Partitions rows into form set of rows. (PARTITION BY clause is used) 
       * Orders rows within those partitions into a particular order. (ORDER BY clause is used) 
