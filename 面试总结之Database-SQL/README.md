@@ -68,6 +68,9 @@
     * In Full Outer Join all rows in all joined tables are included, whether they are matched or not.
   * Self Join
     * This is a particular case when one table joins to itself, with one or two aliases to avoid confusion. A self join can be of any type, as long as the joined tables are the same. A self join is rather unique in that it involves a relationship with only one table. The common example is when company has a hierarchal reporting structure whereby one member of staff reports to another. Self Join can be Outer Join or Inner Join. (Read More Here)
+  * [SQL Server: What is the difference between CROSS JOIN and FULL OUTER JOIN? - Stack Overflow](https://stackoverflow.com/questions/3228871/sql-server-what-is-the-difference-between-cross-join-and-full-outer-join)
+    * A cross join produces a cartesian product between the two tables, returning all possible combinations of all rows. It has no on clause because you're just joining everything to everything.
+    * A full outer join is a combination of a left outer and right outer join. It returns all rows in both tables that match the query's where clause, and in cases where the on condition can't be satisfied for those rows it puts null values in for the unpopulated fields.
 * What are primary keys and foreign keys?
   * Primary keys are the unique identifiers for each row. They must contain unique values and cannot be null. Due to their importance in relational databases, Primary keys are the most fundamental of all keys and constraints. A table can have only one Primary key.
   * Foreign keys are both a method of ensuring data integrity and a manifestation of the relationship between tables.
