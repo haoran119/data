@@ -25,11 +25,33 @@
     * Deallocate cursor (Read More Here)
 * What is Collation?
   * Collation refers to a set of rules that determine how data is sorted and compared. Character data is sorted using rules that define the correct character sequence, with options for specifying case sensitivity, accent marks, kana character types and character width. (Read More Here)
+* What is User Defined Functions? What kind of User-Defined Functions can be created?
+  * User-Defined Functions allow defining its own T-SQL functions that can accept 0 or more parameters and return a single scalar data value or a table data type.
+  * Different Kinds of User-Defined Functions created are: 
+    * Scalar User-Defined Function
+      * A Scalar user-defined function returns one of the scalar data types. Text, ntext, image and timestamp data types are not supported. These are the type of user-defined functions that most developers are used to in other programming languages. You pass in 0 to many parameters and you get a return value.
+    * Inline Table-Value User-Defined Function
+      * An Inline Table-Value user-defined function returns a table data type and is an exceptional alternative to a view as the user-defined function can pass parameters into a T-SQL select command and in essence provide us with a parameterized, non-updateable view of the underlying tables.
+    * Multi-statement Table-Value User-Defined Function
+      * A Multi-Statement Table-Value user-defined function returns a table and is also an exceptional alternative to a view as the function can support multiple T-SQL statements to build the final result where the view is limited to a single SELECT statement. Also, the ability to pass parameters into a TSQL select command or a group of them gives us the capability to in essence create a parameterized, non-updateable view of the data in the underlying tables. Within the create function command you must define the table structure that is being returned. After creating this type of user-defined function, It can be used in the FROM clause of a T-SQL command unlike the behavior found when using a stored procedure which can also return record sets. (Read Here For Example)
+* Window Functions
+  * [Window functions in SQL - GeeksforGeeks](https://www.geeksforgeeks.org/window-functions-in-sql/?ref=gcse)
+    * Window functions applies aggregate and ranking functions over a particular window (set of rows). OVER clause is used with window functions to define that window. OVER clause does two things : 
+      * Partitions rows into form set of rows. (PARTITION BY clause is used) 
+      * Orders rows within those partitions into a particular order. (ORDER BY clause is used) 
+    * Note – If partitions aren’t done, then ORDER BY orders all rows of table. 
+  * [Window Functions](https://www.sqlite.org/windowfunctions.html)
+    * A window function is an SQL function where the input values are taken from a "window" of one or more rows in the results set of a SELECT statement.
+    * Window functions are distinguished from other SQL functions by the presence of an OVER clause. If a function has an OVER clause, then it is a window function. If it lacks an OVER clause, then it is an ordinary aggregate or scalar function. Window functions might also have a FILTER clause in between the function and the OVER clause.
 * What is Difference between Function and Stored Procedure?
   * UDF can be used in the SQL statements anywhere in the WHERE/HAVING/SELECT section where as Stored procedures cannot be. UDFs that return tables can be treated as another rowset. This can be used in JOINs with other tables. Inline UDF’s can be thought of as views that take parameters and can be used in JOINs and other Rowset operations.
 * What is sub-query? Explain properties of sub-query?
   * Sub-queries are often referred to as sub-selects, as they allow a SELECT statement to be executed arbitrarily within the body of another SQL statement. A sub-query is executed by enclosing it in a set of parentheses. Sub-queries are generally used to return a single row as an atomic value, though they may be used to compare values against multiple rows with the IN keyword.
   * A subquery is a SELECT statement that is nested within another T-SQL statement. A subquery SELECT statement if executed independently of the T-SQL statement, in which it is nested, will return a resultset. Meaning a subquery SELECT statement can standalone and is not depended on the statement in which it is nested. A subquery SELECT statement can return any number of values, and can be found in, the column list of a SELECT statement, a FROM, GROUP BY, HAVING, and/or ORDER BY clauses of a T-SQL statement. A Subquery can also be used as a parameter to a function call. Basically a subquery can be used anywhere an expression can be used. (Read More Here)
+* [CTE in SQL - GeeksforGeeks](https://www.geeksforgeeks.org/cte-in-sql/?ref=gcse)
+  * The Common Table Expressions (CTE) were introduced into standard SQL in order to simplify various classes of SQL Queries for which a derived table was just unsuitable.
+  * We can define CTEs by adding a WITH clause directly before SELECT, INSERT, UPDATE, DELETE, or MERGE statement. The WITH clause can include one or more CTEs separated by commas. 
+  * Thus CTEs can be a useful tool when you need to generate temporary result sets that can be accessed in a SELECT, INSERT, UPDATE, DELETE, or MERGE statement.
 * What are different Types of Join?
   * Cross Join
     * A cross join that does not have a WHERE clause produces the Cartesian product of the tables involved in the join. The size of a Cartesian product result set is the number of rows in the first table multiplied by the number of rows in the second table. The common example is when company wants to combine each product with a pricing table to analyze each product at each price.
@@ -63,24 +85,6 @@
 
 * How to ensure integrity ?
   * constraint and foreign keys ?
-* What is User Defined Functions? What kind of User-Defined Functions can be created?
-  * User-Defined Functions allow defining its own T-SQL functions that can accept 0 or more parameters and return a single scalar data value or a table data type.
-  * Different Kinds of User-Defined Functions created are: 
-    * Scalar User-Defined Function
-      * A Scalar user-defined function returns one of the scalar data types. Text, ntext, image and timestamp data types are not supported. These are the type of user-defined functions that most developers are used to in other programming languages. You pass in 0 to many parameters and you get a return value.
-    * Inline Table-Value User-Defined Function
-      * An Inline Table-Value user-defined function returns a table data type and is an exceptional alternative to a view as the user-defined function can pass parameters into a T-SQL select command and in essence provide us with a parameterized, non-updateable view of the underlying tables.
-    * Multi-statement Table-Value User-Defined Function
-      * A Multi-Statement Table-Value user-defined function returns a table and is also an exceptional alternative to a view as the function can support multiple T-SQL statements to build the final result where the view is limited to a single SELECT statement. Also, the ability to pass parameters into a TSQL select command or a group of them gives us the capability to in essence create a parameterized, non-updateable view of the data in the underlying tables. Within the create function command you must define the table structure that is being returned. After creating this type of user-defined function, It can be used in the FROM clause of a T-SQL command unlike the behavior found when using a stored procedure which can also return record sets. (Read Here For Example)
-* Window Functions
-  * [Window functions in SQL - GeeksforGeeks](https://www.geeksforgeeks.org/window-functions-in-sql/?ref=gcse)
-    * Window functions applies aggregate and ranking functions over a particular window (set of rows). OVER clause is used with window functions to define that window. OVER clause does two things : 
-      * Partitions rows into form set of rows. (PARTITION BY clause is used) 
-      * Orders rows within those partitions into a particular order. (ORDER BY clause is used) 
-    * Note – If partitions aren’t done, then ORDER BY orders all rows of table. 
-  * [Window Functions](https://www.sqlite.org/windowfunctions.html)
-    * A window function is an SQL function where the input values are taken from a "window" of one or more rows in the results set of a SELECT statement.
-    * Window functions are distinguished from other SQL functions by the presence of an OVER clause. If a function has an OVER clause, then it is a window function. If it lacks an OVER clause, then it is an ordinary aggregate or scalar function. Window functions might also have a FILTER clause in between the function and the OVER clause.
 * What is Identity?
   * Identity (or AutoNumber) is a column that automatically generates numeric values. A start and increment value can be set, but most DBA leave these at 1. A GUID column also generates numbers; the value of this cannot be controlled. Identity/GUID columns do not need to be indexed.
 * 机器Crash之后数据如何备份恢复？
