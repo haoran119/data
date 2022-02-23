@@ -90,8 +90,9 @@
   * Identity (or AutoNumber) is a column that automatically generates numeric values. A start and increment value can be set, but most DBA leave these at 1. A GUID column also generates numbers; the value of this cannot be controlled. Identity/GUID columns do not need to be indexed.
 * 机器Crash之后数据如何备份恢复？
 * 大文件如何读取到数据库？
+  * ? Cache
 * 如何分析SQL语句执行很慢？
-  * SQL explain ?
+  * ? SQL explain
 * 提供一套关于地址的数据，包含街道 / 区 / 城市 / 州 / 邮编。但是没有国家。然后提供n个function，每个function对应一个国家，你把数据输入进去，会返回true false。问怎么最快速的辨别每个数据的国家。
   * ？以这些数据做为feature，建模进行机器学习。E.g. zip code 2000对应Australia。
   * ？Hashmap
