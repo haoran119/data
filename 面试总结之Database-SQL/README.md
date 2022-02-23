@@ -72,30 +72,17 @@
       * An Inline Table-Value user-defined function returns a table data type and is an exceptional alternative to a view as the user-defined function can pass parameters into a T-SQL select command and in essence provide us with a parameterized, non-updateable view of the underlying tables.
     * Multi-statement Table-Value User-Defined Function
       * A Multi-Statement Table-Value user-defined function returns a table and is also an exceptional alternative to a view as the function can support multiple T-SQL statements to build the final result where the view is limited to a single SELECT statement. Also, the ability to pass parameters into a TSQL select command or a group of them gives us the capability to in essence create a parameterized, non-updateable view of the data in the underlying tables. Within the create function command you must define the table structure that is being returned. After creating this type of user-defined function, It can be used in the FROM clause of a T-SQL command unlike the behavior found when using a stored procedure which can also return record sets. (Read Here For Example)
+* Window Functions
+  * [Window functions in SQL - GeeksforGeeks](Window functions in SQL - GeeksforGeeks)
+    * Window functions applies aggregate and ranking functions over a particular window (set of rows). OVER clause is used with window functions to define that window. OVER clause does two things : 
+      * Partitions rows into form set of rows. (PARTITION BY clause is used) 
+      * Orders rows within those partitions into a particular order. (ORDER BY clause is used) 
+    * Note – If partitions aren’t done, then ORDER BY orders all rows of table. 
+  * [Window Functions](https://www.sqlite.org/windowfunctions.html)
+    * A window function is an SQL function where the input values are taken from a "window" of one or more rows in the results set of a SELECT statement.
+    * Window functions are distinguished from other SQL functions by the presence of an OVER clause. If a function has an OVER clause, then it is a window function. If it lacks an OVER clause, then it is an ordinary aggregate or scalar function. Window functions might also have a FILTER clause in between the function and the OVER clause.
 * What is Identity?
   * Identity (or AutoNumber) is a column that automatically generates numeric values. A start and increment value can be set, but most DBA leave these at 1. A GUID column also generates numbers; the value of this cannot be controlled. Identity/GUID columns do not need to be indexed.
-* What is DataWarehousing?
-  * Subject-oriented, meaning that the data in the database is organized so that all the data elements relating to the same real-world event or object are linked together;
-  * Time-variant, meaning that the changes to the data in the database are tracked and recorded so that reports can be produced showing changes over time;
-  * Non-volatile, meaning that data in the database is never over-written or deleted, once committed, the data is static, read-only, but retained for future reporting.
-  * Integrated, meaning that the database contains data from most or all of an organization’s operational applications, and that this data is made consistent.
-* OLAP v.s. OLTP
-  * [OLTP vs OLAP: Difference Between OLTP and OLAP](https://www.guru99.com/oltp-vs-olap.html)
-  * What is OLAP?
-    * Online Analytical Processing, a category of software tools which provide analysis of data for business decisions. OLAP systems allow users to analyze database information from multiple database systems at one time.
-    * The primary objective is data analysis and not data processing.
-  * What is OLTP?
-    * Online transaction processing shortly known as OLTP supports transaction-oriented applications in a 3-tier architecture. OLTP administers day to day transaction of an organization.
-    * The primary objective is data processing and not data analysis
-  * Example of OLAP
-    * Any Datawarehouse system is an OLAP system. 
-  * Example of OLTP system
-    * An example of OLTP system is ATM center. 
-  * KEY DIFFERENCE between OLTP and OLAP:
-    * Online Analytical Processing (OLAP) is a category of software tools that analyze data stored in a database whereas Online transaction processing (OLTP) supports transaction-oriented applications in a 3-tier architecture.
-    * OLAP creates a single platform for all type of business analysis needs which includes planning, budgeting, forecasting, and analysis while OLTP is useful to administer day to day transactions of an organization.
-    * OLAP is characterized by a large volume of data while OLTP is characterized by large numbers of short online transactions.
-    * In OLAP, data warehouse is created uniquely so that it can integrate different data sources for building a consolidated database whereas OLTP uses traditional DBMS.
 * 机器Crash之后数据如何备份恢复？
 * 大文件如何读取到数据库？
 * 如何分析SQL语句执行很慢？
@@ -139,6 +126,28 @@
 
 ## DATA WAREHOUSE
 
+* What is DataWarehousing?
+  * Subject-oriented, meaning that the data in the database is organized so that all the data elements relating to the same real-world event or object are linked together;
+  * Time-variant, meaning that the changes to the data in the database are tracked and recorded so that reports can be produced showing changes over time;
+  * Non-volatile, meaning that data in the database is never over-written or deleted, once committed, the data is static, read-only, but retained for future reporting.
+  * Integrated, meaning that the database contains data from most or all of an organization’s operational applications, and that this data is made consistent.
+* OLAP v.s. OLTP
+  * [OLTP vs OLAP: Difference Between OLTP and OLAP](https://www.guru99.com/oltp-vs-olap.html)
+  * What is OLAP?
+    * Online Analytical Processing, a category of software tools which provide analysis of data for business decisions. OLAP systems allow users to analyze database information from multiple database systems at one time.
+    * The primary objective is data analysis and not data processing.
+  * What is OLTP?
+    * Online transaction processing shortly known as OLTP supports transaction-oriented applications in a 3-tier architecture. OLTP administers day to day transaction of an organization.
+    * The primary objective is data processing and not data analysis
+  * Example of OLAP
+    * Any Datawarehouse system is an OLAP system. 
+  * Example of OLTP system
+    * An example of OLTP system is ATM center. 
+  * KEY DIFFERENCE between OLTP and OLAP:
+    * Online Analytical Processing (OLAP) is a category of software tools that analyze data stored in a database whereas Online transaction processing (OLTP) supports transaction-oriented applications in a 3-tier architecture.
+    * OLAP creates a single platform for all type of business analysis needs which includes planning, budgeting, forecasting, and analysis while OLTP is useful to administer day to day transactions of an organization.
+    * OLAP is characterized by a large volume of data while OLTP is characterized by large numbers of short online transactions.
+    * In OLAP, data warehouse is created uniquely so that it can integrate different data sources for building a consolidated database whereas OLTP uses traditional DBMS.
 * ETL v.s. ELT
   * [Extract, transform, load - Wikipedia](https://en.wikipedia.org/wiki/Extract,_transform,_load#ETL_Vs._ELT)
     * In computing, extract, transform, load (ETL) is the general procedure of copying data from one or more sources into a destination system which represents the data differently from the source(s) or in a different context than the source(s). The ETL process became a popular concept in the 1970s and is often used in data warehousing.[1]
