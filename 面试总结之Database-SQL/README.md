@@ -100,7 +100,9 @@
 * 提供一套关于地址的数据，包含街道 / 区 / 城市 / 州 / 邮编。但是没有国家。然后提供n个function，每个function对应一个国家，你把数据输入进去，会返回true false。问怎么最快速的辨别每个数据的国家。
   * ？以这些数据做为feature，建模进行机器学习。E.g. zip code 2000对应Australia。
   * ？Hashmap
-* 提供一组以tree的形式展示的数据，区域+cost，计算每个大区的总和
+* 提供一组以tree和table的形式展示的数据，分公司 + amount，计算每个大区的总和
+  * ？DFS
+  * ? 在table上加个column
   * How to implement a hierarchical dataset using SQL
   * [Hierarchical database model - Wikipedia](https://en.wikipedia.org/wiki/Hierarchical_database_model)
   * [Hierarchical Data in SQL: The Ultimate Guide - Database Star](https://www.databasestar.com/hierarchical-data-sql/)
