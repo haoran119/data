@@ -53,6 +53,7 @@
   * The Common Table Expressions (CTE) were introduced into standard SQL in order to simplify various classes of SQL Queries for which a derived table was just unsuitable.
   * We can define CTEs by adding a WITH clause directly before SELECT, INSERT, UPDATE, DELETE, or MERGE statement. The WITH clause can include one or more CTEs separated by commas. 
   * Thus CTEs can be a useful tool when you need to generate temporary result sets that can be accessed in a SELECT, INSERT, UPDATE, DELETE, or MERGE statement.
+  * [SQL | WITH clause - GeeksforGeeks](https://www.geeksforgeeks.org/sql-with-clause/)
 * What are different Types of [Join (SQL) - Wikipedia](https://en.wikipedia.org/wiki/Join_(SQL))?
   * Cross Join
     * A cross join that does not have a WHERE clause produces the Cartesian product of the tables involved in the join. The size of a Cartesian product result set is the number of rows in the first table multiplied by the number of rows in the second table. The common example is when company wants to combine each product with a pricing table to analyze each product at each price.
