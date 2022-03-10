@@ -208,6 +208,9 @@ Data Volume  | Ideal for small data sets with complicated transformation require
 
 ## MYSQL
 
+* [学习笔记之MySQL - 浩然119 - 博客园 (cnblogs.com)](https://www.cnblogs.com/pegasus923/p/5574924.html)
+* [MySQL 教程 | 菜鸟教程](https://www.runoob.com/mysql/mysql-tutorial.html)
+* [MySQL :: MySQL 5.7 Reference Manual :: 13 SQL Statements](https://dev.mysql.com/doc/refman/5.7/en/sql-statements.html)
 * [CASE() Function in MySQL - GeeksforGeeks](https://www.geeksforgeeks.org/case-function-in-mysql/?ref=gcse)
 ```SQL
 CASE
