@@ -73,7 +73,6 @@
 * [这两个小技巧，让SQL语句不仅躲了坑，还提升了 1000 倍](https://mp.weixin.qq.com/s/4cfBY7--KYcf2sRs3tZRQw)
 * [一波操作，我把 SQL 执行效率提高了 10,000,000 倍！](https://mp.weixin.qq.com/s/TaiSl7eNLcz7OrmO1okFxw)
 * [10个SQL技巧](https://mp.weixin.qq.com/s/txbusDvTKwFZdX94kDp7VQ)
-* [在工作中常用到的SQL](https://mp.weixin.qq.com/s/2OtfnWseDyxQ5kHKVSnoeA)
 * [不会SQL注入，连漫画都看不懂了](https://mp.weixin.qq.com/s/qwp6dlHPeb-yRfUPncnieA)
 * [SQL优化之索引的那些事儿](https://mp.weixin.qq.com/s/LUa7bAcoAqVkp1ngzfGLZg)
 * [这句简单的sql，如何加索引？](https://mp.weixin.qq.com/s/LFe6Hq6_1_bNx0Hqhfi8-g)
