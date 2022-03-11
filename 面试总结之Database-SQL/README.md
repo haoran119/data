@@ -258,11 +258,54 @@ END;
 * [我说 SELECT COUNT(*) 会造成全表扫描 (qq.com)](https://mp.weixin.qq.com/s/NZjPYa2YA3K7OY_-hqdmhA)
 * [数据科学家常见的5个SQL面试问题 (qq.com)](https://mp.weixin.qq.com/s/7n8EC3qqpZfWa4OybLPCMA)
 * [经典 SQL 笔试面试题：求解连续区间 (qq.com)](https://mp.weixin.qq.com/s/i2gnSquBWh_HKKiy4OUQCQ)
-* [How to Get the names of the table in SQL - GeeksforGeeks](https://www.geeksforgeeks.org/get-names-table-sql/)
-* The syntax provided in this article works only for SQL Server and MySQL. 
-```sql
-SELECT * FROM INFORMATION_SCHEMA.TABLES 
-```
+* [SQL Tutorial - GeeksforGeeks](https://www.geeksforgeeks.org/sql-tutorial/?ref=ghm)
+  * [How to Get the names of the table in SQL - GeeksforGeeks](https://www.geeksforgeeks.org/get-names-table-sql/)
+    * The syntax provided in this article works only for SQL Server and MySQL. 
+  ```sql
+  SELECT * FROM INFORMATION_SCHEMA.TABLES 
+  ```
+  * [SQL | Sub queries in From Clause - GeeksforGeeks](https://www.geeksforgeeks.org/sql-sub-queries-clause/)
+    * Find all professors whose salary is greater than the average budget of all the departments.
+  ```sql
+  select I.ID, I.NAME, I.DEPARTMENT, I.SALARY 
+  from (select avg(BUDGET) as averageBudget from DEPARTMENT) as BUDGET, Instructor as I
+  where I.SALARY > BUDGET.averageBudget;
+  ```
+  * [SQL Correlated Subqueries - GeeksforGeeks](https://www.geeksforgeeks.org/sql-correlated-subqueries/)
+    * Correlated subqueries are used for row-by-row processing. Each subquery is executed once for every row of the outer query.
+    * A correlated subquery is evaluated once for each row processed by the parent statement. The parent statement can be a SELECT, UPDATE, or DELETE statement.
+    * A correlated subquery is one way of reading every row in a table and comparing values in each row against related data. It is used whenever a subquery must return a different result or set of results for each candidate row considered by the main query. In other words, you can use a correlated subquery to answer a multipart question whose answer depends on the value in each row processed by the parent statement.
+    * Nested Subqueries Versus Correlated Subqueries :
+      * With a normal nested subquery, the inner SELECT query runs first and executes once, returning values to be used by the main query. A correlated subquery, however, executes once for each candidate row considered by the outer query. In other words, the inner query is driven by the outer query.
+      * NOTE : You can also use the ANY and ALL operator in a correlated subquery.
+    * Find all the employees who earn more than the average salary in their department.
+    ```sql
+    SELECT last_name, salary, department_id
+    FROM employees outer
+    WHERE salary >
+                  (SELECT AVG(salary)
+                   FROM employees
+                   WHERE department_id =
+                          outer.department_id);
+    ```
+    * Find employees who have at least one person reporting to them.
+    ```sql
+    SELECT employee_id, last_name, job_id, department_id
+    FROM employees outer
+    WHERE EXISTS 
+    (SELECT ’X’
+    FROM employees
+    WHERE manager_id = outer.employee_id);
+    ```
+    * Find all departments that do not have any employees.
+    ```sql
+    SELECT department_id, department_name
+    FROM departments d
+    WHERE NOT EXISTS 
+    (SELECT ’X’
+    FROM employees
+    WHERE department_id = d.department_id);
+    ```
 * 现有一张学生表，有只有一个列是名字，请选出其中的重名的学生的名字
 ```SQL
 select name from student group by name having count(*) > 1
@@ -274,13 +317,6 @@ from company
 group by deparment 
 having avg(salary) > (select avg(salary) from company)
 ) 
-```
-* [SQL | Sub queries in From Clause - GeeksforGeeks](https://www.geeksforgeeks.org/sql-sub-queries-clause/)
-  * Find all professors whose salary is greater than the average budget of all the departments.
-```sql
-select I.ID, I.NAME, I.DEPARTMENT, I.SALARY 
-from (select avg(BUDGET) as averageBudget from DEPARTMENT) as BUDGET, Instructor as I
-where I.SALARY > BUDGET.averageBudget;
 ```
 * Given the two following tables.
 Names
