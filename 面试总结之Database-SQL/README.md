@@ -258,6 +258,11 @@ END;
 * [我说 SELECT COUNT(*) 会造成全表扫描 (qq.com)](https://mp.weixin.qq.com/s/NZjPYa2YA3K7OY_-hqdmhA)
 * [数据科学家常见的5个SQL面试问题 (qq.com)](https://mp.weixin.qq.com/s/7n8EC3qqpZfWa4OybLPCMA)
 * [经典 SQL 笔试面试题：求解连续区间 (qq.com)](https://mp.weixin.qq.com/s/i2gnSquBWh_HKKiy4OUQCQ)
+* [How to Get the names of the table in SQL - GeeksforGeeks](https://www.geeksforgeeks.org/get-names-table-sql/)
+* The syntax provided in this article works only for SQL Server and MySQL. 
+```sql
+SELECT * FROM INFORMATION_SCHEMA.TABLES 
+```
 
 1. 现有一张学生表，有只有一个列是名字，请选出其中的重名的学生的名字
 ```SQL
