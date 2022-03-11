@@ -489,7 +489,7 @@ END;
     ;
 
     /*
-    Find out S_ID who are enrolled in C_NAME ‘DSA’ or ‘DBMS’, we can write it with the help of independent nested query and IN operator.
+    Find out S_ID who are enrolled in C_NAME ‘DSA’ or ‘DBMS’
 
     S_ID
     S1
