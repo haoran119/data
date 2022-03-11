@@ -441,6 +441,108 @@ END;
                       FROM Student1 
                       WHERE NAME IN (‘Raju’,’Ravi’));
   ```
+* [Nested Queries in SQL - GeeksforGeeks](https://www.geeksforgeeks.org/nested-queries-in-sql/)
+  * In nested queries, a query is written inside a query. The result of inner query is used in execution of outer query.
+  * There are mainly two types of nested queries:
+    * Independent Nested Queries: In independent nested queries, query execution starts from innermost query to outermost queries. The execution of inner query is independent of outer query, but the result of inner query is used in execution of outer query. Various operators like IN, NOT IN, ANY, ALL etc are used in writing independent nested queries.
+    * IN: If we want to find out S_ID who are enrolled in C_NAME ‘DSA’ or ‘DBMS’, we can write it with the help of independent nested query and IN operator.
+    ```sql
+    CREATE TABLE STUDENT
+      (`S_ID` varchar(2), `S_NAME` varchar(6), `S_ADDRESS` varchar(7), `S_PHONE` bigint, `S_AGE` int)
+    ;
+
+    INSERT INTO STUDENT
+      (`S_ID`, `S_NAME`, `S_ADDRESS`, `S_PHONE`, `S_AGE`)
+    VALUES
+      ('S1', 'RAM', 'DELHI', 9455123451, 18),
+      ('S2', 'RAMESH', 'GURGAON', 9652431543, 18),
+      ('S3', 'SUJIT', 'ROHTAK', 9156253131, 20),
+      ('S4', 'SURESH', 'DELHI', 9156768971, 18)
+    ;
+
+
+    CREATE TABLE COURSE
+      (`C_ID` varchar(2), `C_NAME` varchar(11))
+    ;
+
+    INSERT INTO COURSE
+      (`C_ID`, `C_NAME`)
+    VALUES
+      ('C1', 'DSA'),
+      ('C2', 'Programming'),
+      ('C3', 'DBMS')
+    ;
+
+    CREATE TABLE STUDENT_COURSE
+      (`S_ID` varchar(2), `C_ID` varchar(2))
+    ;
+
+    INSERT INTO STUDENT_COURSE
+      (`S_ID`, `C_ID`)
+    VALUES
+      ('S1', 'C1'),
+      ('S1', 'C3'),
+      ('S2', 'C1'),
+      ('S3', 'C2'),
+      ('S4', 'C2'),
+      ('S4', 'C3')
+    ;
+
+    /*
+    Find out S_ID who are enrolled in C_NAME ‘DSA’ or ‘DBMS’, we can write it with the help of independent nested query and IN operator.
+
+    S_ID
+    S1
+    S2
+    S4
+    */
+    Select DISTINCT S_ID from STUDENT_COURSE where C_ID IN
+    (SELECT C_ID from COURSE where C_NAME = 'DSA' or C_NAME = 'DBMS');
+
+    /*
+    Find out names of STUDENTs who have either enrolled in ‘DSA’ or ‘DBMS’
+
+    S_NAME
+    RAM
+    RAMESH
+    SURESH
+    */
+    Select S_NAME from STUDENT where S_ID IN
+    (Select S_ID from STUDENT_COURSE where C_ID IN
+    (SELECT C_ID from COURSE where C_NAME = 'DSA' or C_NAME = 'DBMS'));
+
+    /*
+    Find out S_IDs of STUDENTs who have neither enrolled in ‘DSA’ nor in ‘DBMS’
+
+    S_ID
+    S3
+    */
+    Select S_ID from STUDENT where S_ID NOT IN
+    (Select S_ID from STUDENT_COURSE where C_ID IN
+    (SELECT C_ID from COURSE where C_NAME = 'DSA' or C_NAME = 'DBMS'));
+
+    /*
+    Find out S_NAME of STUDENTs who are enrolled in C_ID ‘C1’
+
+    S_NAME
+    RAM
+    RAMESH
+    */
+    Select S_NAME from STUDENT S where EXISTS
+    (select * from STUDENT_COURSE SC where S.S_ID = SC.S_ID and SC.C_ID = 'C1');
+    ```
+    * Co-related Nested Queries: In co-related nested queries, the output of inner query depends on the row which is being currently executed in outer query.
+    ```sql
+    /*
+    Find out S_NAME of STUDENTs who are enrolled in C_ID ‘C1’
+
+    S_NAME
+    RAM
+    RAMESH
+    */
+    Select S_NAME from STUDENT S where EXISTS
+    (select * from STUDENT_COURSE SC where S.S_ID = SC.S_ID and SC.C_ID = 'C1');
+    ```
 * [How to print duplicate rows in a table? - GeeksforGeeks](https://www.geeksforgeeks.org/how-to-print-duplicate-rows-in-a-table/)  
   * 现有一张学生表，有只有一个列是名字，请选出其中的重名的学生的名字
   ```SQL
