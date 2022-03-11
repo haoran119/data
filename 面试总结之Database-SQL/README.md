@@ -258,120 +258,157 @@ END;
 * [我说 SELECT COUNT(*) 会造成全表扫描 (qq.com)](https://mp.weixin.qq.com/s/NZjPYa2YA3K7OY_-hqdmhA)
 * [数据科学家常见的5个SQL面试问题 (qq.com)](https://mp.weixin.qq.com/s/7n8EC3qqpZfWa4OybLPCMA)
 * [经典 SQL 笔试面试题：求解连续区间 (qq.com)](https://mp.weixin.qq.com/s/i2gnSquBWh_HKKiy4OUQCQ)
-* [SQL Tutorial - GeeksforGeeks](https://www.geeksforgeeks.org/sql-tutorial/?ref=ghm)
-  * [How to Get the names of the table in SQL - GeeksforGeeks](https://www.geeksforgeeks.org/get-names-table-sql/)
-    * The syntax provided in this article works only for SQL Server and MySQL. 
+
+### [SQL Tutorial - GeeksforGeeks](https://www.geeksforgeeks.org/sql-tutorial/?ref=ghm)
+
+* [How to Get the names of the table in SQL - GeeksforGeeks](https://www.geeksforgeeks.org/get-names-table-sql/)
+  * The syntax provided in this article works only for SQL Server and MySQL. 
   ```sql
   SELECT * FROM INFORMATION_SCHEMA.TABLES 
   ```
-  * [SQL | Sub queries in From Clause - GeeksforGeeks](https://www.geeksforgeeks.org/sql-sub-queries-clause/)
-    * Find all professors whose salary is greater than the average budget of all the departments.
+* [SQL | Sub queries in From Clause - GeeksforGeeks](https://www.geeksforgeeks.org/sql-sub-queries-clause/)
+  * Find all professors whose salary is greater than the average budget of all the departments.
   ```sql
   select I.ID, I.NAME, I.DEPARTMENT, I.SALARY 
   from (select avg(BUDGET) as averageBudget from DEPARTMENT) as BUDGET, Instructor as I
   where I.SALARY > BUDGET.averageBudget;
   ```
-  * [SQL Correlated Subqueries - GeeksforGeeks](https://www.geeksforgeeks.org/sql-correlated-subqueries/)
-    * Correlated subqueries are used for row-by-row processing. Each subquery is executed once for every row of the outer query.
-    * A correlated subquery is evaluated once for each row processed by the parent statement. The parent statement can be a SELECT, UPDATE, or DELETE statement.
-    * A correlated subquery is one way of reading every row in a table and comparing values in each row against related data. It is used whenever a subquery must return a different result or set of results for each candidate row considered by the main query. In other words, you can use a correlated subquery to answer a multipart question whose answer depends on the value in each row processed by the parent statement.
-    * Nested Subqueries Versus Correlated Subqueries :
-      * With a normal nested subquery, the inner SELECT query runs first and executes once, returning values to be used by the main query. A correlated subquery, however, executes once for each candidate row considered by the outer query. In other words, the inner query is driven by the outer query.
-      * NOTE : You can also use the ANY and ALL operator in a correlated subquery.
-    * Find all the employees who earn more than the average salary in their department.
-    ```sql
-    SELECT last_name, salary, department_id
-    FROM employees outer
-    WHERE salary >
-                  (SELECT AVG(salary)
-                   FROM employees
-                   WHERE department_id =
-                          outer.department_id);
-    ```
-    * Find employees who have at least one person reporting to them.
-    ```sql
-    SELECT employee_id, last_name, job_id, department_id
-    FROM employees outer
-    WHERE EXISTS 
-    (SELECT ’X’
-    FROM employees
-    WHERE manager_id = outer.employee_id);
-    ```
-    * Find all departments that do not have any employees.
-    ```sql
-    SELECT department_id, department_name
-    FROM departments d
-    WHERE NOT EXISTS 
-    (SELECT ’X’
-    FROM employees
-    WHERE department_id = d.department_id);
-    ```
-  * [SQL | Top-N Queries - GeeksforGeeks](https://www.geeksforgeeks.org/sql-top-n-queries/)
-    * Top-N Analysis in SQL deals with How to limit the number of rows returned from ordered sets of data in SQL. 
-    * employees with top 3 lowest salaries. The result is displayed in increasing order of their salaries. 
-    ```sql
-    SELECT ROWNUM as RANK, first_name, last_name, employee_id, salary
-    FROM (SELECT salary, first_name, last_name, employee_id
-          FROM Employee
-          ORDER BY salary)
-    WHERE ROWNUM<=3;
-    ```
-    * 3 employees who were hired earliest. The result is displayed in increasing order of their hire date.
-    ```sql
-    SELECT ROWNUM as RANK, first_name, employee_id, hire_date
-    FROM (SELECT first_name, employee_id, hire_date
-          FROM Employee
-          ORDER BY hire_date)
-    WHERE ROWNUM<=3;
-    ```
-    * Different styles for using Top-N analysis
-      * Inline View and ROWNUM : The classic Top-N style query uses an ordered inline view to force the data into the correct order which then finally uses the ROWNUM check to limit the data returned. 
-        * highest paid 4 employees. The altering is done by ORDER BY clause.
-        ```sql
-        SELECT first_name, last_name
-        FROM (SELECT first_name, last_name
-              FROM Employee
-              ORDER BY salary DESC)
-        WHERE ROWNUM<=4;
-        ```
-      * Nested Inline View and ROWNUM : This method can also be used for paging through data, like paged web reports. 
-        ```sql
-        SELECT employee_id, first_name, salary
-        FROM   (SELECT employee_id, first_name, salary, rownum AS rnum
-                FROM   (SELECT employee_id, first_name, salary
-                        FROM Employee
-                        ORDER BY salary)
-                WHERE rownum<=4)
-        WHERE  rnum>=2;
-        ```
-        * Explanation: In the above SQL statement, first of all the inside query runs and gives its output to the outer query which then finally gives us the desired output.
-      * Using RANK function : The RANK analytic function assigns a sequential rank to each distinct value in output. 
-        ```sql
-        SELECT dpartment_id, first_name
-        FROM (SELECT dpartment_id, first_name,
-              RANK() OVER (ORDER BY dpartment_id DESC) AS rnum 
-              FROM Employee)
-        WHERE rnum<=3;
-        ```
-        * Explanation: In the above SQL statement, RANK() function also acts as a virtual field whose value is restricted at the end. RANK() function doesn’t give us the top N rows or the top N distinct values. The number of rows returned is dependent on the number of duplicates in the data.
-      * Using DENSE_RANK function : The DENSE_RANK analytic function is similar to RANK() function. The difference is that the ranks are compacted due to which there are no gaps. 
-        ```sql
-        SELECT dpartment_id, first_name
-        FROM (SELECT dpartment_id, first_name,
-              DENSE_RANK() OVER (ORDER BY dpartment_id DESC) AS rnum 
-              FROM Employee)
-        WHERE rnum<=3;
-        ```
-        * Explanation: In the above SQL statement, DENSE_RANK() function also assigns same rank to the duplicate values but there is no gap in the rank sequence. Thus it always gives us a Top N distinct values result.
-      * Using ROW_NUMBER function : The ROW_NUMBER analytic function is similar to ROWNUM virtual column but like all analytic functions its action can be limited to a specific output of data based on the order of data. 
-        ```sql
-        SELECT dpartment_id, first_name
-        FROM (SELECT dpartment_id, first_name,
-              ROW_NUMBER() OVER (ORDER BY dpartment_id DESC) AS rnum 
-              FROM Employee)
-        WHERE rnum<=4;
-        ```
-        * Explanation: In the above SQL statement, ROW_NUMBER() will only select the top N values irrespective of their being duplicate.
+* [SQL Correlated Subqueries - GeeksforGeeks](https://www.geeksforgeeks.org/sql-correlated-subqueries/)
+  * Correlated subqueries are used for row-by-row processing. Each subquery is executed once for every row of the outer query.
+  * A correlated subquery is evaluated once for each row processed by the parent statement. The parent statement can be a SELECT, UPDATE, or DELETE statement.
+  * A correlated subquery is one way of reading every row in a table and comparing values in each row against related data. It is used whenever a subquery must return a different result or set of results for each candidate row considered by the main query. In other words, you can use a correlated subquery to answer a multipart question whose answer depends on the value in each row processed by the parent statement.
+  * Nested Subqueries Versus Correlated Subqueries :
+    * With a normal nested subquery, the inner SELECT query runs first and executes once, returning values to be used by the main query. A correlated subquery, however, executes once for each candidate row considered by the outer query. In other words, the inner query is driven by the outer query.
+    * NOTE : You can also use the ANY and ALL operator in a correlated subquery.
+  * Find all the employees who earn more than the average salary in their department.
+  ```sql
+  SELECT last_name, salary, department_id
+  FROM employees outer
+  WHERE salary >
+                (SELECT AVG(salary)
+                 FROM employees
+                 WHERE department_id =
+                        outer.department_id);
+  ```
+  * Find employees who have at least one person reporting to them.
+  ```sql
+  SELECT employee_id, last_name, job_id, department_id
+  FROM employees outer
+  WHERE EXISTS 
+  (SELECT ’X’
+  FROM employees
+  WHERE manager_id = outer.employee_id);
+  ```
+  * Find all departments that do not have any employees.
+  ```sql
+  SELECT department_id, department_name
+  FROM departments d
+  WHERE NOT EXISTS 
+  (SELECT ’X’
+  FROM employees
+  WHERE department_id = d.department_id);
+  ```
+* [SQL | Top-N Queries - GeeksforGeeks](https://www.geeksforgeeks.org/sql-top-n-queries/)
+  * Top-N Analysis in SQL deals with How to limit the number of rows returned from ordered sets of data in SQL. 
+  * employees with top 3 lowest salaries. The result is displayed in increasing order of their salaries. 
+  ```sql
+  SELECT ROWNUM as RANK, first_name, last_name, employee_id, salary
+  FROM (SELECT salary, first_name, last_name, employee_id
+        FROM Employee
+        ORDER BY salary)
+  WHERE ROWNUM<=3;
+  ```
+  * 3 employees who were hired earliest. The result is displayed in increasing order of their hire date.
+  ```sql
+  SELECT ROWNUM as RANK, first_name, employee_id, hire_date
+  FROM (SELECT first_name, employee_id, hire_date
+        FROM Employee
+        ORDER BY hire_date)
+  WHERE ROWNUM<=3;
+  ```
+  * Different styles for using Top-N analysis
+    * Inline View and ROWNUM : The classic Top-N style query uses an ordered inline view to force the data into the correct order which then finally uses the ROWNUM check to limit the data returned. 
+      * highest paid 4 employees. The altering is done by ORDER BY clause.
+      ```sql
+      SELECT first_name, last_name
+      FROM (SELECT first_name, last_name
+            FROM Employee
+            ORDER BY salary DESC)
+      WHERE ROWNUM<=4;
+      ```
+    * Nested Inline View and ROWNUM : This method can also be used for paging through data, like paged web reports. 
+      ```sql
+      SELECT employee_id, first_name, salary
+      FROM   (SELECT employee_id, first_name, salary, rownum AS rnum
+              FROM   (SELECT employee_id, first_name, salary
+                      FROM Employee
+                      ORDER BY salary)
+              WHERE rownum<=4)
+      WHERE  rnum>=2;
+      ```
+      * Explanation: In the above SQL statement, first of all the inside query runs and gives its output to the outer query which then finally gives us the desired output.
+    * Using RANK function : The RANK analytic function assigns a sequential rank to each distinct value in output. 
+      ```sql
+      SELECT dpartment_id, first_name
+      FROM (SELECT dpartment_id, first_name,
+            RANK() OVER (ORDER BY dpartment_id DESC) AS rnum 
+            FROM Employee)
+      WHERE rnum<=3;
+      ```
+      * Explanation: In the above SQL statement, RANK() function also acts as a virtual field whose value is restricted at the end. RANK() function doesn’t give us the top N rows or the top N distinct values. The number of rows returned is dependent on the number of duplicates in the data.
+    * Using DENSE_RANK function : The DENSE_RANK analytic function is similar to RANK() function. The difference is that the ranks are compacted due to which there are no gaps. 
+      ```sql
+      SELECT dpartment_id, first_name
+      FROM (SELECT dpartment_id, first_name,
+            DENSE_RANK() OVER (ORDER BY dpartment_id DESC) AS rnum 
+            FROM Employee)
+      WHERE rnum<=3;
+      ```
+      * Explanation: In the above SQL statement, DENSE_RANK() function also assigns same rank to the duplicate values but there is no gap in the rank sequence. Thus it always gives us a Top N distinct values result.
+    * Using ROW_NUMBER function : The ROW_NUMBER analytic function is similar to ROWNUM virtual column but like all analytic functions its action can be limited to a specific output of data based on the order of data. 
+      ```sql
+      SELECT dpartment_id, first_name
+      FROM (SELECT dpartment_id, first_name,
+            ROW_NUMBER() OVER (ORDER BY dpartment_id DESC) AS rnum 
+            FROM Employee)
+      WHERE rnum<=4;
+      ```
+      * Explanation: In the above SQL statement, ROW_NUMBER() will only select the top N values irrespective of their being duplicate.
+* [SQL | Subquery - GeeksforGeeks](https://www.geeksforgeeks.org/sql-subquery/)
+  * You can place the Subquery in a number of SQL clauses: WHERE clause, HAVING clause, FROM clause.
+  * Subqueries can be used with SELECT, UPDATE, INSERT, DELETE statements along with expression operator. It could be equality operator or comparison operator such as =, >, =, <= and Like operator.
+  * A subquery is a query within another query. The outer query is called as main query and inner query is called as subquery.
+  * The subquery generally executes first, and its output is used to complete the query condition for the main or outer query.
+  * Subquery must be enclosed in parentheses.
+  * Subqueries are on the right side of the comparison operator.
+  * ORDER BY command cannot be used in a Subquery. GROUPBY command can be used to perform same function as ORDER BY command.
+  * Use single-row operators with singlerow Subqueries. Use multiple-row operators with multiple-row Subqueries.
+  * To display NAME, LOCATION, PHONE_NUMBER of the students from DATABASE table whose section is A
+  ```sql
+  Select NAME, LOCATION, PHONE_NUMBER from DATABASE 
+  WHERE ROLL_NO IN
+  (SELECT ROLL_NO from STUDENT where SECTION=’A’); 
+  ```
+  * To insert Student2 into Student1 table:
+  ```sql
+  INSERT INTO Student1  SELECT * FROM Student2;
+  ```
+  * To delete students from Student2 table whose rollno is same as that in Student1 table and having location as chennai
+  ```sql
+  DELETE FROM Student2 
+  WHERE ROLL_NO IN ( SELECT ROLL_NO 
+                     FROM Student1 
+                     WHERE LOCATION = ’chennai’);
+  ```
+  * To update name of the students to geeks in Student2 table whose location is same as Raju,Ravi in Student1 table
+  ```sql
+  UPDATE Student2 
+  SET NAME=’geeks’ 
+  WHERE LOCATION IN ( SELECT LOCATION 
+                      FROM Student1 
+                      WHERE NAME IN (‘Raju’,’Ravi’));
+  ```
+  
 * 现有一张学生表，有只有一个列是名字，请选出其中的重名的学生的名字
 ```SQL
 select name from student group by name having count(*) > 1
@@ -412,7 +449,7 @@ Write SQL statement to display the player’s Names, numbers and points for all 
 ```SQL
 SELECT names.name, names.number, points.points FROM names INNER JOIN points ON names.name=points.name
 ```
-4. Given
+* Given
 
 STAFF
 id INTEGER
@@ -428,7 +465,7 @@ Only return departments with at least one employee receiving a commission greate
 ```SQL
 SELECT dept, COUNT (*) FROM staff GROUP BY dept HAVING comm.>5000 ORDER BY 1 DESC
 ```
-5. Given the two following table definitions
+* Given the two following table definitions
 
 ORG
 deptnumb INTEGER
