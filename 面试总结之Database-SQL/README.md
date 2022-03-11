@@ -307,71 +307,71 @@ END;
     WHERE department_id = d.department_id);
     ```
   * [SQL | Top-N Queries - GeeksforGeeks](https://www.geeksforgeeks.org/sql-top-n-queries/)
-  * Top-N Analysis in SQL deals with How to limit the number of rows returned from ordered sets of data in SQL. 
-  * employees with top 3 lowest salaries. The result is displayed in increasing order of their salaries. 
-  ```sql
-  SELECT ROWNUM as RANK, first_name, last_name, employee_id, salary
-  FROM (SELECT salary, first_name, last_name, employee_id
-        FROM Employee
-        ORDER BY salary)
-  WHERE ROWNUM<=3;
-  ```
-  * 3 employees who were hired earliest. The result is displayed in increasing order of their hire date.
-  ```sql
-  SELECT ROWNUM as RANK, first_name, employee_id, hire_date
-  FROM (SELECT first_name, employee_id, hire_date
-        FROM Employee
-        ORDER BY hire_date)
-  WHERE ROWNUM<=3;
-  ```
-  * Different styles for using Top-N analysis
-    * Inline View and ROWNUM : The classic Top-N style query uses an ordered inline view to force the data into the correct order which then finally uses the ROWNUM check to limit the data returned. 
-      * highest paid 4 employees. The altering is done by ORDER BY clause.
-      ```sql
-      SELECT first_name, last_name
-      FROM (SELECT first_name, last_name
-            FROM Employee
-            ORDER BY salary DESC)
-      WHERE ROWNUM<=4;
-      ```
-    * Nested Inline View and ROWNUM : This method can also be used for paging through data, like paged web reports. 
-      ```sql
-      SELECT employee_id, first_name, salary
-      FROM   (SELECT employee_id, first_name, salary, rownum AS rnum
-              FROM   (SELECT employee_id, first_name, salary
-                      FROM Employee
-                      ORDER BY salary)
-              WHERE rownum<=4)
-      WHERE  rnum>=2;
-      ```
-      * Explanation: In the above SQL statement, first of all the inside query runs and gives its output to the outer query which then finally gives us the desired output.
-    * Using RANK function : The RANK analytic function assigns a sequential rank to each distinct value in output. 
-      ```sql
-      SELECT dpartment_id, first_name
-      FROM (SELECT dpartment_id, first_name,
-            RANK() OVER (ORDER BY dpartment_id DESC) AS rnum 
-            FROM Employee)
-      WHERE rnum<=3;
-      ```
-      * Explanation: In the above SQL statement, RANK() function also acts as a virtual field whose value is restricted at the end. RANK() function doesn’t give us the top N rows or the top N distinct values. The number of rows returned is dependent on the number of duplicates in the data.
-    * Using DENSE_RANK function : The DENSE_RANK analytic function is similar to RANK() function. The difference is that the ranks are compacted due to which there are no gaps. 
-      ```sql
-      SELECT dpartment_id, first_name
-      FROM (SELECT dpartment_id, first_name,
-            DENSE_RANK() OVER (ORDER BY dpartment_id DESC) AS rnum 
-            FROM Employee)
-      WHERE rnum<=3;
-      ```
-      * Explanation: In the above SQL statement, DENSE_RANK() function also assigns same rank to the duplicate values but there is no gap in the rank sequence. Thus it always gives us a Top N distinct values result.
-    * Using ROW_NUMBER function : The ROW_NUMBER analytic function is similar to ROWNUM virtual column but like all analytic functions its action can be limited to a specific output of data based on the order of data. 
-      ```sql
-      SELECT dpartment_id, first_name
-      FROM (SELECT dpartment_id, first_name,
-            ROW_NUMBER() OVER (ORDER BY dpartment_id DESC) AS rnum 
-            FROM Employee)
-      WHERE rnum<=4;
-      ```
-      * Explanation: In the above SQL statement, ROW_NUMBER() will only select the top N values irrespective of their being duplicate.
+    * Top-N Analysis in SQL deals with How to limit the number of rows returned from ordered sets of data in SQL. 
+    * employees with top 3 lowest salaries. The result is displayed in increasing order of their salaries. 
+    ```sql
+    SELECT ROWNUM as RANK, first_name, last_name, employee_id, salary
+    FROM (SELECT salary, first_name, last_name, employee_id
+          FROM Employee
+          ORDER BY salary)
+    WHERE ROWNUM<=3;
+    ```
+    * 3 employees who were hired earliest. The result is displayed in increasing order of their hire date.
+    ```sql
+    SELECT ROWNUM as RANK, first_name, employee_id, hire_date
+    FROM (SELECT first_name, employee_id, hire_date
+          FROM Employee
+          ORDER BY hire_date)
+    WHERE ROWNUM<=3;
+    ```
+    * Different styles for using Top-N analysis
+      * Inline View and ROWNUM : The classic Top-N style query uses an ordered inline view to force the data into the correct order which then finally uses the ROWNUM check to limit the data returned. 
+        * highest paid 4 employees. The altering is done by ORDER BY clause.
+        ```sql
+        SELECT first_name, last_name
+        FROM (SELECT first_name, last_name
+              FROM Employee
+              ORDER BY salary DESC)
+        WHERE ROWNUM<=4;
+        ```
+      * Nested Inline View and ROWNUM : This method can also be used for paging through data, like paged web reports. 
+        ```sql
+        SELECT employee_id, first_name, salary
+        FROM   (SELECT employee_id, first_name, salary, rownum AS rnum
+                FROM   (SELECT employee_id, first_name, salary
+                        FROM Employee
+                        ORDER BY salary)
+                WHERE rownum<=4)
+        WHERE  rnum>=2;
+        ```
+        * Explanation: In the above SQL statement, first of all the inside query runs and gives its output to the outer query which then finally gives us the desired output.
+      * Using RANK function : The RANK analytic function assigns a sequential rank to each distinct value in output. 
+        ```sql
+        SELECT dpartment_id, first_name
+        FROM (SELECT dpartment_id, first_name,
+              RANK() OVER (ORDER BY dpartment_id DESC) AS rnum 
+              FROM Employee)
+        WHERE rnum<=3;
+        ```
+        * Explanation: In the above SQL statement, RANK() function also acts as a virtual field whose value is restricted at the end. RANK() function doesn’t give us the top N rows or the top N distinct values. The number of rows returned is dependent on the number of duplicates in the data.
+      * Using DENSE_RANK function : The DENSE_RANK analytic function is similar to RANK() function. The difference is that the ranks are compacted due to which there are no gaps. 
+        ```sql
+        SELECT dpartment_id, first_name
+        FROM (SELECT dpartment_id, first_name,
+              DENSE_RANK() OVER (ORDER BY dpartment_id DESC) AS rnum 
+              FROM Employee)
+        WHERE rnum<=3;
+        ```
+        * Explanation: In the above SQL statement, DENSE_RANK() function also assigns same rank to the duplicate values but there is no gap in the rank sequence. Thus it always gives us a Top N distinct values result.
+      * Using ROW_NUMBER function : The ROW_NUMBER analytic function is similar to ROWNUM virtual column but like all analytic functions its action can be limited to a specific output of data based on the order of data. 
+        ```sql
+        SELECT dpartment_id, first_name
+        FROM (SELECT dpartment_id, first_name,
+              ROW_NUMBER() OVER (ORDER BY dpartment_id DESC) AS rnum 
+              FROM Employee)
+        WHERE rnum<=4;
+        ```
+        * Explanation: In the above SQL statement, ROW_NUMBER() will only select the top N values irrespective of their being duplicate.
 * 现有一张学生表，有只有一个列是名字，请选出其中的重名的学生的名字
 ```SQL
 select name from student group by name having count(*) > 1
