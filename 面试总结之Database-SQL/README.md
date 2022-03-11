@@ -382,6 +382,31 @@ END;
       WHERE rnum<=4;
       ```
       * Explanation: In the above SQL statement, ROW_NUMBER() will only select the top N values irrespective of their being duplicate.
+* [How to find Nth highest salary from a table - GeeksforGeeks](https://www.geeksforgeeks.org/find-nth-highest-salary-table/)
+  * Limit clause has two components, First component is to skip  number of rows from top and second component is display number of rows we want. 
+  ```sql
+  CREATE TABLE Employee(ename varchar(1), sal int);
+
+  INSERT INTO Employee
+  VALUES
+  ('A', 100),
+  ('C', 300),
+  ('D', 400),
+  ('B', 200),
+  ('F', 600),
+  ('G', 700),
+  ('H', 800),
+  ('E', 500),
+  ('I', 900)
+  ;
+
+  select * from Employee ORDER BY sal ASC limit 5,1;
+
+  /*
+  ename   sal
+  F   600
+  */
+  ```
 * [SQL | Subquery - GeeksforGeeks](https://www.geeksforgeeks.org/sql-subquery/)
   * You can place the Subquery in a number of SQL clauses: WHERE clause, HAVING clause, FROM clause.
   * Subqueries can be used with SELECT, UPDATE, INSERT, DELETE statements along with expression operator. It could be equality operator or comparison operator such as =, >, =, <= and Like operator.
