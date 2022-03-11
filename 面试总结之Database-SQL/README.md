@@ -273,6 +273,14 @@ END;
   from (select avg(BUDGET) as averageBudget from DEPARTMENT) as BUDGET, Instructor as I
   where I.SALARY > BUDGET.averageBudget;
   ```
+  * 从公司员工工资表中选出所有部门平均工资大于公司平均工资的部门里的所有员工记录
+  ```SQL
+  select * from company where department in (select department 
+  from company 
+  group by deparment 
+  having avg(salary) > (select avg(salary) from company)
+  ) 
+  ```
 * [SQL Correlated Subqueries - GeeksforGeeks](https://www.geeksforgeeks.org/sql-correlated-subqueries/)
   * Correlated subqueries are used for row-by-row processing. Each subquery is executed once for every row of the outer query.
   * A correlated subquery is evaluated once for each row processed by the parent statement. The parent statement can be a SELECT, UPDATE, or DELETE statement.
@@ -408,19 +416,11 @@ END;
                       FROM Student1 
                       WHERE NAME IN (‘Raju’,’Ravi’));
   ```
-  
-* 现有一张学生表，有只有一个列是名字，请选出其中的重名的学生的名字
-```SQL
-select name from student group by name having count(*) > 1
-```
-* 从公司员工工资表中选出所有部门平均工资大于公司平均工资的部门里的所有员工记录
-```SQL
-select * from company where department in (select department 
-from company 
-group by deparment 
-having avg(salary) > (select avg(salary) from company)
-) 
-```
+* [How to print duplicate rows in a table? - GeeksforGeeks](https://www.geeksforgeeks.org/how-to-print-duplicate-rows-in-a-table/)  
+  * 现有一张学生表，有只有一个列是名字，请选出其中的重名的学生的名字
+  ```SQL
+  select name from student group by name having count(*) > 1
+  ```
 * Given the two following tables.
 Names
 Name Number
