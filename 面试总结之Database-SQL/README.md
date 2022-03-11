@@ -263,12 +263,11 @@ END;
 ```sql
 SELECT * FROM INFORMATION_SCHEMA.TABLES 
 ```
-
-1. 现有一张学生表，有只有一个列是名字，请选出其中的重名的学生的名字
+* 现有一张学生表，有只有一个列是名字，请选出其中的重名的学生的名字
 ```SQL
 select name from student group by name having count(*) > 1
 ```
-2. 从公司员工工资表中选出所有部门平均工资大于公司平均工资的部门里的所有员工记录
+* 从公司员工工资表中选出所有部门平均工资大于公司平均工资的部门里的所有员工记录
 ```SQL
 select * from company where department in (select department 
 from company 
@@ -276,7 +275,14 @@ group by deparment
 having avg(salary) > (select avg(salary) from company)
 ) 
 ```
-3. Given the two following tables.
+* [SQL | Sub queries in From Clause - GeeksforGeeks](https://www.geeksforgeeks.org/sql-sub-queries-clause/)
+  * Find all professors whose salary is greater than the average budget of all the departments.
+```sql
+select I.ID, I.NAME, I.DEPARTMENT, I.SALARY 
+from (select avg(BUDGET) as averageBudget from DEPARTMENT) as BUDGET, Instructor as I
+where I.SALARY > BUDGET.averageBudget;
+```
+* Given the two following tables.
 Names
 Name Number
 Wayne Gretzky 99
