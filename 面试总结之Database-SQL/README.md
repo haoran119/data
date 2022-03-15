@@ -625,6 +625,42 @@ Write a SQL statement to display each department by name, and the total salary o
 SELECT a.deptname, SUM(b.salary) FROM org a, staff b WHERE a.deptnumb=b.dept GROUP BY a.deptname
 ```
 
+* Find the sales with the max sales amount for the year 2022, the result should include two columns sales_id, total_amount
+```sql
+CREATE TABLE sales (
+  id INT,
+  amount INT,
+  sales_id VARCHAR(30),
+  sales_date DATE
+);
+INSERT INTO sales VALUES (1, 150, 'A1', '2022-01-01');
+INSERT INTO sales VALUES (2, 210, 'B1', '2022-01-02');
+INSERT INTO sales VALUES (3, 140, 'C1', '2022-01-03');
+INSERT INTO sales VALUES (4, 70, 'A1', '2022-01-04');
+INSERT INTO sales VALUES (5, 10, 'B1', '2022-01-05');
+INSERT INTO sales VALUES (6, 150, 'A1', '2021-01-01');
+INSERT INTO sales VALUES (7, 100, 'D1', '2022-01-03');
+
+select sales_id, sum(amount) as total_amount
+from sales
+group by sales_id, extract(year from sales_date)
+having sum(amount) = 
+   (select sum(amount) as total
+    from sales
+    group by sales_id, extract(year from sales_date)
+    having extract(year from sales_date) = 2022
+    order by total DESC
+    limit 1
+    )
+and extract(year from sales_date) = 2022
+
+/*
+sales_id total_amount
+A1  220
+B1  220
+*/
+```
+
 ### Understanding of table, view and index.
 Given tables as follows:
 
