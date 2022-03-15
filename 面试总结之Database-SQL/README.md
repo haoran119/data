@@ -318,6 +318,8 @@ END;
   ```
 * [SQL | Top-N Queries - GeeksforGeeks](https://www.geeksforgeeks.org/sql-top-n-queries/)
   * Top-N Analysis in SQL deals with How to limit the number of rows returned from ordered sets of data in SQL. 
+  * [SQL SELECT TOP, LIMIT, FETCH FIRST ROWS ONLY, ROWNUM](https://www.w3schools.com/sql/sql_top.asp)
+  * Note: Not all database systems support the SELECT TOP clause. MySQL supports the LIMIT clause to select a limited number of records, while Oracle uses FETCH FIRST n ROWS ONLY and ROWNUM.
   * employees with top 3 lowest salaries. The result is displayed in increasing order of their salaries. 
   ```sql
   SELECT ROWNUM as RANK, first_name, last_name, employee_id, salary
